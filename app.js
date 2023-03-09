@@ -50,8 +50,6 @@ app.get("/posts/:postId", function (req, res) {
         const postTitle = _.lowerCase(post.postTitle);
         if(postTitle === postId){
             res.render("post", { post })
-        } else {
-            console.log("No match found!");
         }
     });
 });
