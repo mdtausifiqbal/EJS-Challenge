@@ -44,7 +44,12 @@ app.post("/compose", function (req, res) {
 });
 
 app.get("/posts/:postId", function (req, res) {
-    console.log(req.params.postId);
+    const postId = req.params.postId;
+    posts.forEach(post => {
+        if(post.postTitle === postId){
+            console.log("Match found!")
+        }
+    });
 });
 
 app.listen(3000, function () {
