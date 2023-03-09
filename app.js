@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
+const _ = require("lodash");
 
 const homeContent =
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium exercitationem necessitatibus iusto animi impedit atque sit rem dolorum, dolorem quae adipisci obcaecati cumque facilis laudantium voluptatem! Beatae assumenda alias quam!";
@@ -44,10 +45,13 @@ app.post("/compose", function (req, res) {
 });
 
 app.get("/posts/:postId", function (req, res) {
-    const postId = req.params.postId;
+    const postId = _.lowerCase(req.params.postId);
     posts.forEach(post => {
-        if(post.postTitle === postId){
+        const postTitle = _.lowerCase(post.postTitle);
+        if(postTitle === postId){
             console.log("Match found!")
+        } else {
+            console.log("No match found!");
         }
     });
 });
