@@ -41,7 +41,11 @@ app.post("/compose", function (req, res) {
     }
     posts.push(post);
     res.redirect("/");
-})
+});
+
+app.get("/posts/:postId", function (req, res) {
+    console.log(req.params.postId);
+});
 
 app.listen(3000, function () {
     console.log("Server started on port 3000");
